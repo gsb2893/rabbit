@@ -3,7 +3,7 @@
 //Requisitamos a biblioteca de envio
 var amqp = require('amqplib/callback_api');
 //Conectamos ao RabbitMQ. No caso esta instalado na máquina local
-amqp.connect('amqp://localhost', function(err, conn) {
+amqp.connect('amqp://127.0.0.1', function(err, conn) {
   //Criamos um canal
   conn.createChannel(function(err, ch) {
     //nome da queue
