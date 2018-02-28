@@ -17,7 +17,7 @@ amqp.connect('amqp://localhost', function(err, conn) {
       //Verifica quantos pontos tem a imagem
       var segs = msg.content.toString().split('.').lenght - 1;
       //Mostra a imagem recebida
-      console.log(" [x] Received %s", msg.content.toString());
+      console.log(" [x] Received %s with %d secs", msg.content.toString(),segs);
       //Espera o tempo que ela precisa pra "trabalhar"
       setTimeout(function(){
         console.log(" [X] Done");
