@@ -7,17 +7,17 @@ amqp.connect('amqp://127.0.0.1', function(err, conn) {
   //Criamos um canal
   conn.createChannel(function(err, ch) {
     //nome da queue
-    var q = 'hello';
+    var q = 'task_queue';
     //mensagem que estará na queue
-    var msg = 'Hello World!';
+    var msg = process.argv.slice(2).join(' ') || 'Hello World!';
     //Crio a queue, dou um nome a ela e digo que ela não vai ser durável
     //É importante dizer que você pode dar esse comando quantas vezes
     //quiser, a query só será criada se nenhuma query com esse nome existir
-    ch.assertQueue(q, {durable: false});
+    ch.assertQueue(q, {durable: true});
     /* Note: on Node 6 Buffer.from(msg) should be used
     *  Mando a mensagem para dentro da queue com a função sendToQueue
     */
-    ch.sendToQueue(q, new Buffer(msg));
+    ch.sendToQueue(q, new Buffer(msg),{persistent: true});
     //Dou um console log apenas para teste
     console.log(" [x] Sent %s", msg);
     //Aqui vamos fechar a conexão
