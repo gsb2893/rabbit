@@ -21,7 +21,7 @@ amqp.connect('amqp://localhost', function(err, conn) {
       //Espera o tempo que ela precisa pra "trabalhar"
       setTimeout(function(){
         console.log(" [X] Done");
-      }, segs * 1000)
+      }, segs*1000)
     }, {noAck: true});
   });
 });
