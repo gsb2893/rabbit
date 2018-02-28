@@ -20,7 +20,7 @@ amqp.connect('amqp://localhost', function(err, conn) {
     ch.sendToQueue(q, new Buffer(msg));
     //Dou um console log apenas para teste
     console.log(" [x] Sent %s", msg);
-  });
-  //Aqui vamos fechar a conexão
-  setTimeout(function() { conn.close(); process.exit(0) }, 500);
+    //Aqui vamos fechar a conexão
+    setTimeout(function() { conn.close(); process.exit(0) }, 500);
+  });  
 });
