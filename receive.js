@@ -15,7 +15,7 @@ amqp.connect('amqp://localhost', function(err, conn) {
     //Consumo a mensagem, basicamente fico aguardando e quando receber jogo a mensagem no log
     ch.consume(q, function(msg) {
       //Verifica quantos pontos tem a imagem
-      var segs = msg.content.toString().split('.').lenght() - 1;
+      const segs = msg.content.toString().split('.').lenght - 1;
       //Mostra a imagem recebida
       console.log(" [x] Received %s with %d secs", msg.content.toString(),segs);
       //Espera o tempo que ela precisa pra "trabalhar"
